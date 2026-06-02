@@ -19,7 +19,7 @@ import {
   Zap
 } from "lucide-react";
 
-export const whatsappNumber = "593987777779";
+export const whatsappNumber = "593983222100";
 
 export const navItems = [
   { label: "Servicios", href: "#servicios" },
