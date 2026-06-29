@@ -23,9 +23,10 @@ export const whatsappNumber = "593983222100";
 
 export const navItems = [
   { label: "Servicios", href: "#servicios" },
-  { label: "Cotizar", href: "#diagnostico" },
+  { label: "Cotizar", href: "#cotizador" },
   { label: "Accesorios", href: "#accesorios" },
-  { label: "Sucursales", href: "#sucursales" }
+  { label: "Sucursales", href: "#sucursales" },
+  { label: "Seguimiento", href: "#seguimiento" }
 ];
 
 export const trustItems = [
@@ -35,46 +36,66 @@ export const trustItems = [
 ];
 
 export const diagnostics = [
-  { icon: Smartphone, title: "Pantalla rota", text: "Vidrio, touch, display o manchas en pantalla." },
-  { icon: Cable, title: "No carga", text: "Pin de carga, batería o carga intermitente." },
-  { icon: Camera, title: "Cámara o audio", text: "Cámara, parlante, micrófono o sensores." },
-  { icon: Droplets, title: "Se mojó", text: "Diagnóstico por humedad y limpieza técnica." },
-  { icon: BatteryCharging, title: "Batería", text: "Se descarga rápido, se apaga o se recalienta." },
-  { icon: MonitorSmartphone, title: "Software", text: "Lento, bloqueado, errores o actualización." },
-  { icon: TabletSmartphone, title: "Tablet / iWatch", text: "Revisión para tablets y relojes inteligentes." },
-  { icon: MessageCircle, title: "Otro problema", text: "Cuéntanos qué ocurre con tu equipo." }
+  { icon: Smartphone, title: "Pantalla rota", text: "Vidrio, touch, display o manchas en pantalla.", price: "Pantallas desde $35", startingPrice: "35", keywords: "pantalla display touch vidrio Samsung A54 iPhone Xiaomi Huawei Motorola" },
+  { icon: Cable, title: "No carga", text: "Pin de carga, batería o carga intermitente.", price: "Reparación desde $20", startingPrice: "20", keywords: "pin puerto conector carga cable USB tipo C lightning Samsung iPhone Xiaomi" },
+  { icon: Camera, title: "Cámara o audio", text: "Cámara, parlante, micrófono o sensores.", price: "Reparación desde $25", startingPrice: "25", keywords: "cámara audio parlante altavoz micrófono sensor Samsung iPhone Xiaomi" },
+  { icon: Droplets, title: "Se mojó", text: "Diagnóstico por humedad y limpieza técnica.", price: "Diagnóstico desde $20", startingPrice: "20", keywords: "mojado agua humedad limpieza no enciende Samsung iPhone Xiaomi" },
+  { icon: BatteryCharging, title: "Batería", text: "Se descarga rápido, se apaga o se recalienta.", price: "Cambio desde $25", startingPrice: "25", keywords: "batería descarga apaga recalienta hinchada Samsung A54 iPhone Xiaomi" },
+  { icon: MonitorSmartphone, title: "Software", text: "Lento, bloqueado, errores o actualización.", price: "Servicio desde $20", startingPrice: "20", keywords: "software lento bloqueado actualización sistema Android iOS Samsung iPhone Xiaomi" },
+  { icon: TabletSmartphone, title: "Tablet / iWatch", text: "Revisión para tablets y relojes inteligentes.", price: "Servicio desde $30", startingPrice: "30", keywords: "tablet iPad iWatch smartwatch reloj Apple Samsung Huawei" },
+  { icon: MessageCircle, title: "Otro problema", text: "Cuéntanos qué ocurre con tu equipo.", price: "Diagnóstico desde $20", startingPrice: "20", keywords: "otro diagnóstico revisión celular equipo todas las marcas" }
 ];
+
+export const brands = ["Apple", "Samsung", "Xiaomi", "Huawei", "Motorola", "Honor", "Oppo", "Otra"];
 
 export const services = [
   {
     icon: Smartphone,
     title: "Cambio de pantalla",
-    text: "Pantallas compatibles y originales según disponibilidad, instalación técnica y prueba final."
+    text: "Pantallas compatibles y originales según disponibilidad, instalación técnica y prueba final.",
+    time: "Tiempo estimado: confirmar por modelo",
+    price: "Desde $35",
+    problem: "Pantalla rota"
   },
   {
     icon: Zap,
     title: "Batería y carga",
-    text: "Reemplazo de baterías, pines de carga, diagnóstico de consumo y carga rápida."
+    text: "Reemplazo de baterías, pines de carga, diagnóstico de consumo y carga rápida.",
+    time: "Tiempo estimado: confirmar por modelo",
+    price: "Desde $20",
+    problem: "Batería"
   },
   {
     icon: Camera,
     title: "Cámara y audio",
-    text: "Revisión de cámaras, parlantes, micrófonos, sensores y conectores internos."
+    text: "Revisión de cámaras, parlantes, micrófonos, sensores y conectores internos.",
+    time: "Tiempo estimado después del diagnóstico",
+    price: "Desde $25",
+    problem: "Cámara o audio"
   },
   {
     icon: MonitorSmartphone,
     title: "Software",
-    text: "Restauración, respaldos, optimización y actualización del sistema."
+    text: "Restauración, respaldos, optimización y actualización del sistema.",
+    time: "Tiempo estimado según el proceso",
+    price: "Desde $20",
+    problem: "Software"
   },
   {
     icon: Wrench,
     title: "Microsoldadura",
-    text: "Intervenciones avanzadas para fallas de placa, humedad y componentes críticos."
+    text: "Intervenciones avanzadas para fallas de placa, humedad y componentes críticos.",
+    time: "Tiempo estimado después del diagnóstico",
+    price: "Desde $30",
+    problem: "Otro problema"
   },
   {
     icon: TabletSmartphone,
     title: "Tablets y smartwatch",
-    text: "Soporte técnico para iPad, tablets Android, iWatch y relojes inteligentes."
+    text: "Soporte técnico para iPad, tablets Android, iWatch y relojes inteligentes.",
+    time: "Tiempo estimado: confirmar por modelo",
+    price: "Desde $30",
+    problem: "Tablet / iWatch"
   }
 ];
 
@@ -90,25 +111,29 @@ export const accessories = [
     icon: Zap,
     title: "Cargadores rápidos",
     text: "Potencia estable para uso diario.",
-    artClass: "art-blue"
+    artClass: "art-blue",
+    keywords: "cargador iPhone Samsung tipo C USB-C adaptador fuente"
   },
   {
     icon: Headphones,
     title: "AirPods y audífonos",
     text: "Audio inalámbrico para llamadas y música.",
-    artClass: "art-green"
+    artClass: "art-green",
+    keywords: "audífonos bluetooth manos libres iPhone Android"
   },
   {
     icon: Cable,
     title: "Cables resistentes",
     text: "Carga y datos para iPhone, USB-C y micro USB.",
-    artClass: "art-amber"
+    artClass: "art-amber",
+    keywords: "cable iPhone lightning tipo C USB-C micro USB"
   },
   {
     icon: ShoppingBag,
     title: "Micas y protectores",
     text: "Protección precisa para pantalla y cámara.",
-    artClass: "art-violet"
+    artClass: "art-violet",
+    keywords: "mica Samsung iPhone protector estuche antichoque vidrio cámara"
   }
 ];
 
@@ -131,10 +156,10 @@ export const testimonials = [
 ];
 
 export const branches = [
-  { name: "Matriz", address: "Prensa y Río Arajuno", icon: MapPin },
-  { name: "Sucursal Colón", address: "Colón y Juan León Mera", icon: MapPin },
-  { name: "Sucursal Shyris", address: "Shyris y Gaspar de Villarroel", icon: MapPin },
-  { name: "Sucursal Prensa", address: "Prensa y Vaca de Castro", icon: MapPin }
+  { name: "Matriz", address: "Prensa y Río Arajuno", reference: "Sector Av. de la Prensa", hours: "Consulta el horario por WhatsApp", icon: MapPin },
+  { name: "Sucursal Colón", address: "Colón y Juan León Mera", reference: "Sector La Mariscal", hours: "Consulta el horario por WhatsApp", icon: MapPin },
+  { name: "Sucursal Shyris", address: "Shyris y Gaspar de Villarroel", reference: "Sector Parque La Carolina", hours: "Consulta el horario por WhatsApp", icon: MapPin },
+  { name: "Sucursal Prensa", address: "Prensa y Vaca de Castro", reference: "Norte de Quito", hours: "Consulta el horario por WhatsApp", icon: MapPin }
 ];
 
 export const quickStats = [

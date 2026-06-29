@@ -12,6 +12,7 @@ export default function FloatingWhatsApp() {
       aria-label="Contactar por WhatsApp"
     >
       <MessageCircle size={25} />
+      <span>Cotizar por WhatsApp</span>
     </a>
   );
 }

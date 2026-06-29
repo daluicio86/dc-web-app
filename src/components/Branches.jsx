@@ -1,5 +1,5 @@
 import React from "react";
-import { MessageCircle, Navigation } from "lucide-react";
+import { Clock3, Landmark, MessageCircle, Navigation } from "lucide-react";
 import { branches } from "../data/siteData.js";
 import { mapsUrl, whatsappUrl } from "../utils/whatsapp.js";
 import SectionHeading from "./SectionHeading.jsx";
@@ -10,13 +10,20 @@ export default function Branches() {
       <SectionHeading eyebrow="Estamos cerca" title="Conoce nuestras sucursales.">
         Elige la más cómoda y llega directo con Google Maps.
       </SectionHeading>
+      <nav className="branch-shortcuts" aria-label="Accesos rápidos a sucursales">
+        {branches.map(({ name }, index) => (
+          <a key={name} href={`#sucursal-${index + 1}`}>{name.replace("Sucursal ", "")}</a>
+        ))}
+      </nav>
       <div className="branch-grid">
-        {branches.map(({ name, address, icon: Icon }, index) => (
-          <article className="branch-card" key={address}>
+        {branches.map(({ name, address, reference, hours, icon: Icon }, index) => (
+          <article className="branch-card" id={`sucursal-${index + 1}`} key={address}>
             <span className="branch-number">{index + 1}</span>
             <Icon size={24} />
             <h3>{name}</h3>
             <p>{address}</p>
+            <p className="branch-meta"><Landmark size={15} /> {reference}</p>
+            <p className="branch-meta"><Clock3 size={15} /> {hours}</p>
             <div className="branch-actions">
               <a href={mapsUrl(`DoctorCell ${address} Quito Ecuador`)} target="_blank" rel="noopener noreferrer">
                 <Navigation size={15} />

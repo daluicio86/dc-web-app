@@ -20,13 +20,13 @@ export default function Hero() {
           <span><Clock3 size={15} /> Diagnóstico ágil</span>
         </div>
         <p className="eyebrow">Más de 15 años reparando tecnología en Quito</p>
-        <h1>Tu celular vuelve a la vida hoy.</h1>
+        <h1>Reparamos tu celular hoy en Quito.</h1>
         <p className="hero-copy">
           Reparaciones profesionales para celulares, tablets y smartwatch con repuestos de calidad,
           garantía real y atención inmediata en cualquiera de nuestras sucursales.
         </p>
         <div className="hero-actions">
-          <ButtonLink href="#diagnostico" icon={MessageCircle}>Cotizar reparación</ButtonLink>
+          <ButtonLink href="#cotizador" icon={MessageCircle}>Cotizar reparación</ButtonLink>
           <ButtonLink href="#sucursales" variant="ghost" icon={MapPin}>Ver sucursal cercana</ButtonLink>
         </div>
         <div className="trust-strip" aria-label="Beneficios principales">

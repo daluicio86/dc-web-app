@@ -6,11 +6,15 @@ export default function Guarantee() {
     <section className="guarantee">
       <div className="guarantee-content">
         <p className="eyebrow">Garantía DoctorCell</p>
-        <h2>Reparar con expertos no cuesta más.</h2>
+        <h2>Una garantía clara, antes de reparar.</h2>
         <p>
-          Cada reparación pasa por diagnóstico, instalación cuidadosa, pruebas de funcionamiento
-          y respaldo de garantía para que salgas tranquilo.
+          El plazo depende del repuesto y del tipo de reparación. Antes de autorizar el trabajo te
+          entregamos por escrito la duración, la cobertura y las exclusiones aplicables a tu caso.
         </p>
+        <div className="guarantee-note">
+          <strong>¿Cómo se reclama?</strong>
+          <span>Presenta el equipo y el comprobante en una sucursal. Revisaremos que la falla corresponda al trabajo realizado.</span>
+        </div>
       </div>
       <div className="guarantee-list">
         {guaranteeItems.map(({ label, icon: Icon }) => (
