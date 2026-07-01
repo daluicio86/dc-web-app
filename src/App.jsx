@@ -1,6 +1,7 @@
 import React from "react";
 import Header from "./components/Header.jsx";
 import Hero from "./components/Hero.jsx";
+import PromoStrip from "./components/PromoStrip.jsx";
 import QuoteFinder from "./components/QuoteFinder.jsx";
 import BrandsStrip from "./components/BrandsStrip.jsx";
 import Intro from "./components/Intro.jsx";
@@ -14,7 +15,7 @@ import Branches from "./components/Branches.jsx";
 import RepairTracking from "./components/RepairTracking.jsx";
 import FinalCta from "./components/FinalCta.jsx";
 import Footer from "./components/Footer.jsx";
-import FloatingWhatsApp from "./components/FloatingWhatsApp.jsx";
+import Chatbot from "./components/Chatbot.jsx";
 
 export default function App() {
   return (
@@ -22,6 +23,7 @@ export default function App() {
       <Header />
       <main id="inicio">
         <Hero />
+        <PromoStrip />
         <QuoteFinder />
         <BrandsStrip />
         <Intro />
@@ -35,7 +37,7 @@ export default function App() {
         <RepairTracking />
         <FinalCta />
       </main>
-      <FloatingWhatsApp />
+      <Chatbot />
       <Footer />
     </>
   );

@@ -3,76 +3,75 @@ import {
   ArrowRight,
   CheckCircle2,
   Clock3,
-  MapPin,
   MessageCircle,
+  ShieldCheck,
   Sparkles,
   Wrench
 } from "lucide-react";
-import { quickStats, trustItems } from "../data/siteData.js";
+import { whatsappUrl } from "../utils/whatsapp.js";
 import ButtonLink from "./ButtonLink.jsx";
 
 export default function Hero() {
   return (
-    <section className="hero">
+    <section className="hero hero-conversion">
       <div className="hero-content">
         <div className="hero-livebar">
-          <span><Sparkles size={15} /> Atención inmediata</span>
-          <span><Clock3 size={15} /> Diagnóstico ágil</span>
+          <span><span className="live-dot" /> Respuesta rápida en horario de atención</span>
+          <span><Clock3 size={15} /> Quito · 4 sucursales</span>
         </div>
-        <p className="eyebrow">Más de 15 años reparando tecnología en Quito</p>
-        <h1>Reparamos tu celular hoy en Quito.</h1>
+
+        <p className="eyebrow">Expertos en tecnología · Más de 15 años</p>
+        <h1>Diagnóstico gratis en <em>1 minuto</em> por WhatsApp.</h1>
         <p className="hero-copy">
-          Reparaciones profesionales para celulares, tablets y smartwatch con repuestos de calidad,
-          garantía real y atención inmediata en cualquiera de nuestras sucursales.
+          Cuéntanos qué le pasa a tu equipo y recibe orientación inicial, una cotización
+          sin compromiso y la garantía aplicable antes de reparar.
         </p>
+
         <div className="hero-actions">
-          <ButtonLink href="#cotizador" icon={MessageCircle}>Cotizar reparación</ButtonLink>
-          <ButtonLink href="#sucursales" variant="ghost" icon={MapPin}>Ver sucursal cercana</ButtonLink>
+          <ButtonLink
+            href={whatsappUrl("Hola DoctorCell, quiero un diagnóstico gratis para mi equipo.")}
+            icon={MessageCircle}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Diagnóstico gratis ahora
+          </ButtonLink>
+          <ButtonLink href="#casos-reales" variant="ghost" icon={ArrowRight}>
+            Ver casos reales
+          </ButtonLink>
         </div>
+
         <div className="trust-strip" aria-label="Beneficios principales">
-          {trustItems.map(({ label, icon: Icon }) => (
-            <span key={label}>
-              <Icon size={16} />
-              {label}
-            </span>
-          ))}
+          <span><CheckCircle2 size={16} /> Cotización sin compromiso</span>
+          <span><ShieldCheck size={16} /> Garantía visible</span>
+          <span><Sparkles size={16} /> Prueba final del equipo</span>
         </div>
       </div>
 
-      <div className="hero-media" aria-hidden="true">
-        <div className="workbench-panel">
-          <span>Servicio técnico certificado</span>
-          <strong>Revisión + repuesto + garantía</strong>
-        </div>
-        <div className="phone phone-front">
-          <div className="phone-speaker" />
-          <div className="screen">
-            <span>Diagnóstico</span>
-            <strong>Listo en minutos</strong>
-            <div className="screen-steps">
-              <b>1</b><em>Prueba</em>
-              <b>2</b><em>Repuesto</em>
-              <b>3</b><em>Entrega</em>
-            </div>
-            <div className="pulse-row"><i /><i /><i /></div>
+      <div className="hero-media" aria-label="Diagnóstico DoctorCell por WhatsApp">
+        <div className="hero-glow" />
+        <div className="diagnosis-card">
+          <div className="diagnosis-head">
+            <span className="doctor-avatar"><Wrench size={23} /></span>
+            <span><strong>DoctorCell</strong><small>En línea</small></span>
+            <ShieldCheck size={24} />
           </div>
+          <div className="chat-bubble chat-in">¡Hola! 👋 ¿Qué equipo necesitas reparar?</div>
+          <div className="chat-bubble chat-out">Samsung A54. Se cayó y no responde la pantalla.</div>
+          <div className="chat-bubble chat-in">
+            Podemos ayudarte. Envíanos una foto y te orientamos sin compromiso.
+          </div>
+          <a
+            className="mini-whatsapp"
+            href={whatsappUrl("Hola DoctorCell, quiero un diagnóstico gratis para mi equipo.")}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <MessageCircle size={18} /> Iniciar diagnóstico
+          </a>
         </div>
-        <div className="phone phone-back">
-          <div className="camera" />
-          <div className="shield"><CheckCircle2 size={16} /> Garantía</div>
-        </div>
-        <div className="repair-chip chip-top"><Wrench size={17} /> Cambio de pantalla</div>
-        <div className="repair-chip chip-mid"><Sparkles size={17} /> Equipo probado</div>
-        <div className="repair-chip chip-bottom"><MessageCircle size={17} /> Cotiza por WhatsApp</div>
-        <div className="hero-stats">
-          {quickStats.map((item) => (
-            <span key={item.label}>
-              <strong>{item.value}</strong>
-              {item.label}
-            </span>
-          ))}
-          <ArrowRight className="stats-arrow" size={20} />
-        </div>
+        <div className="floating-proof proof-top"><ShieldCheck size={18} /><span><strong>Garantía clara</strong> antes de reparar</span></div>
+        <div className="floating-proof proof-bottom"><Clock3 size={18} /><span><strong>Respuesta ágil</strong> por WhatsApp</span></div>
       </div>
     </section>
   );
