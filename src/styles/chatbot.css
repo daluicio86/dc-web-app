@@ -1,5 +1,5 @@
 .chatbot-launcher {
-  position: fixed; right: 22px; bottom: 22px; z-index: 30;
+  position: fixed; right: 22px; bottom: 92px; z-index: 30;
   display: inline-flex; align-items: center; justify-content: center; gap: 9px;
   height: 58px; padding: 0 20px; border: 0; border-radius: 999px;
   color: var(--white); background: linear-gradient(135deg, #3169b3, #244f88);
@@ -69,7 +69,7 @@
 @keyframes spin { to { transform: rotate(360deg); } }
 @keyframes chatbot-in { from { opacity: 0; transform: translateY(14px) scale(.98); } }
 @media (max-width: 760px) {
-  .chatbot-launcher { right: 14px; bottom: 14px; left: 14px; width: auto; }
+  .chatbot-launcher { right: 14px; bottom: 82px; left: 14px; width: auto; }
   .chatbot-panel { right: 8px; bottom: 8px; width: calc(100vw - 16px); height: calc(100vh - 16px); border-radius: 17px; }
   .chatbot-options { max-height: 142px; }
 }

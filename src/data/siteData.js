@@ -21,12 +21,20 @@ import {
 
 export const whatsappNumber = "593983222100";
 
+export const contactInfo = {
+  whatsappDisplay: "+593 98 322 2100",
+  phoneDisplay: "098 322 2100",
+  phoneHref: "+593983222100",
+  email: "info@doctorcell.com.ec",
+  hours: "Lunes a sábado, 09:00–18:00"
+};
+
 export const navItems = [
   { label: "Servicios", href: "#servicios" },
   { label: "Cotizar", href: "#cotizador" },
-  { label: "Accesorios", href: "#accesorios" },
+  { label: "Agendar", href: "#agendar" },
   { label: "Sucursales", href: "#sucursales" },
-  { label: "Seguimiento", href: "#seguimiento" }
+  { label: "Preguntas", href: "#preguntas" }
 ];
 
 export const trustItems = [
@@ -75,8 +83,8 @@ export const services = [
   },
   {
     icon: MonitorSmartphone,
-    title: "Software",
-    text: "Restauración, respaldos, optimización y actualización del sistema.",
+    title: "Software y desbloqueo",
+    text: "Restauración, optimización, actualización y desbloqueo legítimo del equipo.",
     time: "Tiempo estimado según el proceso",
     price: "Desde $20",
     problem: "Software"
@@ -156,10 +164,10 @@ export const testimonials = [
 ];
 
 export const branches = [
-  { name: "Matriz", address: "Prensa y Río Arajuno", reference: "Sector Av. de la Prensa", hours: "Consulta el horario por WhatsApp", icon: MapPin },
-  { name: "Sucursal Colón", address: "Colón y Juan León Mera", reference: "Sector La Mariscal", hours: "Consulta el horario por WhatsApp", icon: MapPin },
-  { name: "Sucursal Shyris", address: "Shyris y Gaspar de Villarroel", reference: "Sector Parque La Carolina", hours: "Consulta el horario por WhatsApp", icon: MapPin },
-  { name: "Sucursal Prensa", address: "Prensa y Vaca de Castro", reference: "Norte de Quito", hours: "Consulta el horario por WhatsApp", icon: MapPin }
+  { name: "Matriz", address: "Prensa y Río Arajuno", reference: "Sector Av. de la Prensa", hours: contactInfo.hours, icon: MapPin },
+  { name: "Sucursal Colón", address: "Colón y Juan León Mera", reference: "Sector La Mariscal", hours: contactInfo.hours, icon: MapPin },
+  { name: "Sucursal Shyris", address: "Shyris y Gaspar de Villarroel", reference: "Sector Parque La Carolina", hours: contactInfo.hours, icon: MapPin },
+  { name: "Sucursal Prensa", address: "Prensa y Vaca de Castro", reference: "Norte de Quito", hours: contactInfo.hours, icon: MapPin }
 ];
 
 export const quickStats = [

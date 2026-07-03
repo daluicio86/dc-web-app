@@ -1,6 +1,6 @@
-import { CheckCircle2, Clock3, MapPin, Menu, MessageCircle, X } from "lucide-react";
+import { Clock3, Mail, MapPin, Menu, MessageCircle, Phone, X } from "lucide-react";
 import React, { useState } from "react";
-import { navItems } from "../data/siteData.js";
+import { contactInfo, navItems } from "../data/siteData.js";
 import { whatsappUrl } from "../utils/whatsapp.js";
 import Brand from "./Brand.jsx";
 
@@ -11,10 +11,11 @@ export default function Header() {
   return (
     <header className="site-header">
       <div className="header-topline">
-        {/*<span><CheckCircle2 size={14} /> Diagnóstico inicial sin compromiso</span>*/}
         <div>
           <span><MapPin size={14} /> 4 sucursales en Quito</span>
-          <span><Clock3 size={14} /> Respuesta rápida por WhatsApp</span>
+          <a href={`tel:${contactInfo.phoneHref}`}><Phone size={14} /> {contactInfo.phoneDisplay}</a>
+          <a href={`mailto:${contactInfo.email}`}><Mail size={14} /> {contactInfo.email}</a>
+          <span><Clock3 size={14} /> {contactInfo.hours}</span>
         </div>
       </div>
       <div className="header-main">

@@ -394,8 +394,10 @@ h3 {
 }
 
 .header-topline span,
+.header-topline a,
 .header-topline div { display:flex; align-items:center; gap:7px; }
 .header-topline div { gap:22px; }
+.header-topline a { color:inherit; }
 .header-topline svg { flex:0 0 auto; color:var(--dc-green-bright); }
 
 .header-main {
@@ -1080,6 +1082,8 @@ h3 {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
+.price-disclaimer { margin: 18px 0 0; color: var(--muted); font-size: 13px; line-height: 1.6; }
+
 .service-grid article {
   padding: 26px;
   transition: transform .2s ease, box-shadow .2s ease;
@@ -1368,8 +1372,9 @@ h3 {
 }
 
 .site-footer {
-  display: flex;
-  align-items: center;
+  display: grid;
+  grid-template-columns: minmax(260px, 1.4fr) 1fr 1fr;
+  align-items: start;
   justify-content: space-between;
   gap: 18px;
   padding: 28px clamp(20px, 4vw, 64px);
@@ -1381,6 +1386,12 @@ h3 {
   margin: 0;
   color: var(--muted);
 }
+
+.footer-about { max-width: 520px; }
+.footer-about p { margin-top: 14px; line-height: 1.6; }
+.footer-contact, .footer-hours { display: grid; gap: 10px; }
+.footer-contact a, .footer-hours a, .footer-hours span { display: flex; align-items: center; gap: 8px; color: var(--muted); font-size: 14px; }
+.footer-contact a:hover, .footer-hours a:hover { color: var(--blue); }
 
 @media (max-width: 1050px) {
   .header-main { gap:14px; padding-inline:24px; }
@@ -1448,7 +1459,10 @@ h3 {
   }
 
   .header-topline { justify-content:center; min-height:28px; padding:5px 14px; font-size:10px; }
-  .header-topline > div { display:none; }
+  .header-topline { justify-content:flex-start; overflow-x:auto; }
+  .header-topline { scrollbar-width:none; }
+  .header-topline::-webkit-scrollbar { display:none; }
+  .header-topline > div { display:flex; flex:0 0 auto; gap:16px; }
   .header-main { min-height:78px; padding:6px 14px; }
   .brand { padding:2px 9px; border-radius:12px; }
   .brand-logo { width:150px; height:66px; }
@@ -1566,7 +1580,7 @@ h3 {
 
   .site-footer {
     align-items: flex-start;
-    flex-direction: column;
+    grid-template-columns: 1fr;
   }
 
   .floating-whatsapp {

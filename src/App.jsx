@@ -16,6 +16,10 @@ import RepairTracking from "./components/RepairTracking.jsx";
 import FinalCta from "./components/FinalCta.jsx";
 import Footer from "./components/Footer.jsx";
 import Chatbot from "./components/Chatbot.jsx";
+import FloatingWhatsApp from "./components/FloatingWhatsApp.jsx";
+import AppointmentBooking from "./components/AppointmentBooking.jsx";
+import Gallery from "./components/Gallery.jsx";
+import Faq from "./components/Faq.jsx";
 
 export default function App() {
   return (
@@ -33,11 +37,15 @@ export default function App() {
         <BeforeAfter />
         <Accessories />
         <Testimonials />
+        <Gallery />
         <Branches />
+        <AppointmentBooking />
+        <Faq />
         <RepairTracking />
         <FinalCta />
       </main>
       <Chatbot />
+      <FloatingWhatsApp />
       <Footer />
     </>
   );

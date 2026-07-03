@@ -8,7 +8,8 @@ export default function Services() {
   return (
     <section className="section services" id="servicios">
       <SectionHeading eyebrow="Servicios especializados" title="Reparamos todas las marcas.">
-        iPhone, Samsung, Huawei, Xiaomi y otros modelos de celulares, tablets y smartwatch.
+        Precios orientativos: pantalla desde $35, batería desde $20 y desbloqueo desde $20.
+        El valor final depende del modelo, el diagnóstico y el repuesto disponible.
       </SectionHeading>
       <div className="service-grid">
         {services.map(({ icon: Icon, title, text, time, price, problem }) => (
@@ -29,6 +30,7 @@ export default function Services() {
           </article>
         ))}
       </div>
+      <p className="price-disclaimer">Los precios publicados son referenciales, no incluyen daños adicionales y se confirman antes de iniciar el trabajo.</p>
     </section>
   );
 }
