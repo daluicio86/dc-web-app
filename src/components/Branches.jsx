@@ -1,20 +1,40 @@
-import React from "react";
+import React, { useMemo, useState } from "react";
 import { Clock3, Landmark, MessageCircle, Navigation } from "lucide-react";
 import { branches } from "../data/siteData.js";
 import { mapsUrl, whatsappUrl } from "../utils/whatsapp.js";
 import SectionHeading from "./SectionHeading.jsx";
 
 export default function Branches() {
+  const [activeBranch, setActiveBranch] = useState(0);
+  const selected = branches[activeBranch];
+  const mapSrc = useMemo(
+    () => `https://www.google.com/maps?q=${encodeURIComponent(`DoctorCell ${selected.address} Quito Ecuador`)}&output=embed`,
+    [selected.address]
+  );
+
   return (
     <section className="section branches" id="sucursales">
       <SectionHeading eyebrow="Estamos cerca" title="Conoce nuestras sucursales.">
         Elige la más cómoda y llega directo con Google Maps.
       </SectionHeading>
-      <nav className="branch-shortcuts" aria-label="Accesos rápidos a sucursales">
+      <nav className="branch-shortcuts" aria-label="Selecciona una sucursal">
         {branches.map(({ name }, index) => (
-          <a key={name} href={`#sucursal-${index + 1}`}>{name.replace("Sucursal ", "")}</a>
+          <button className={activeBranch === index ? "is-active" : ""} type="button" key={name} onClick={() => setActiveBranch(index)}>
+            {name.replace("Sucursal ", "")}
+          </button>
         ))}
       </nav>
+      <div className="branch-map">
+        <iframe key={mapSrc} title={`Mapa de ${selected.name}`} src={mapSrc} loading="lazy" referrerPolicy="no-referrer-when-downgrade" />
+        <div className="branch-map-copy">
+          <span>Sucursal seleccionada</span>
+          <strong>{selected.name}</strong>
+          <p>{selected.address} · {selected.reference}</p>
+          <a href={mapsUrl(`DoctorCell ${selected.address} Quito Ecuador`)} target="_blank" rel="noopener noreferrer">
+            <Navigation size={16} /> Abrir ruta en Google Maps
+          </a>
+        </div>
+      </div>
       <div className="branch-grid">
         {branches.map(({ name, address, reference, hours, icon: Icon }, index) => (
           <article className="branch-card" id={`sucursal-${index + 1}`} key={address}>

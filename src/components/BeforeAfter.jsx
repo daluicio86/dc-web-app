@@ -12,8 +12,8 @@ const comparisons = [
 export default function BeforeAfter() {
   return (
     <section className="section before-after" id="casos-reales">
-      <SectionHeading eyebrow="Casos reales de clientes" title="Reparaciones que se notan.">
-        Conoce cómo recibimos el equipo, qué trabajo realizamos y las pruebas que hacemos antes de entregarlo.
+      <SectionHeading eyebrow="Nuestro proceso" title="Reparaciones que se notan.">
+        Así recibimos el equipo, realizamos el trabajo y hacemos las pruebas antes de entregarlo.
       </SectionHeading>
       <div className="comparison-grid">
         {comparisons.map((item, index) => (

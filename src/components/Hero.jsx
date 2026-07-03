@@ -21,11 +21,13 @@ export default function Hero() {
         </div>
 
         <p className="eyebrow">Expertos en tecnología · Más de 15 años</p>
-        <h1>Diagnóstico gratis en <em>1 minuto</em> por WhatsApp.</h1>
+        <h1>Tu celular como nuevo, <em>hoy mismo.</em></h1>
         <p className="hero-copy">
-          Cuéntanos qué le pasa a tu equipo y recibe orientación inicial, una cotización
-          sin compromiso y la garantía aplicable antes de reparar.
+          Reparaciones rápidas, repuestos de calidad y garantía por escrito. Cuéntanos
+          qué le pasa a tu equipo y recibe una cotización sin compromiso.
         </p>
+
+        <div className="hero-price"><strong>Desde $20</strong><span>según servicio y modelo</span></div>
 
         <div className="hero-actions">
           <ButtonLink
@@ -34,7 +36,7 @@ export default function Hero() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            Diagnóstico gratis ahora
+            Cotiza por WhatsApp
           </ButtonLink>
           <ButtonLink href="#casos-reales" variant="ghost" icon={ArrowRight}>
             Ver casos reales
