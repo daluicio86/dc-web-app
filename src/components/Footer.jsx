@@ -21,6 +21,8 @@ export default function Footer() {
         <strong>Atención</strong>
         <span><Clock3 size={16} /> {contactInfo.hours}</span>
         <a href="#sucursales"><MapPin size={16} /> Ver las 4 sucursales</a>
+        <a href="/guias/">Guías de reparación</a>
+        <button className="footer-cookie-settings" type="button" onClick={() => window.dispatchEvent(new Event("doctorcell:cookie-settings"))}>Preferencias de medición</button>
       </div>
     </footer>
   );

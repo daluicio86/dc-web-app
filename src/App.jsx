@@ -20,6 +20,9 @@ import FloatingWhatsApp from "./components/FloatingWhatsApp.jsx";
 import AppointmentBooking from "./components/AppointmentBooking.jsx";
 import Gallery from "./components/Gallery.jsx";
 import Faq from "./components/Faq.jsx";
+import SeoGuides from "./components/SeoGuides.jsx";
+import RepairOptions from "./components/RepairOptions.jsx";
+import AnalyticsConsent from "./components/AnalyticsConsent.jsx";
 
 export default function App() {
   return (
@@ -33,6 +36,7 @@ export default function App() {
         <Intro />
         <Diagnostic />
         <Services />
+        <RepairOptions />
         <Guarantee />
         <BeforeAfter />
         <Accessories />
@@ -41,11 +45,13 @@ export default function App() {
         <Branches />
         <AppointmentBooking />
         <Faq />
+        <SeoGuides />
         <RepairTracking />
         <FinalCta />
       </main>
       <Chatbot />
       <FloatingWhatsApp />
+      <AnalyticsConsent />
       <Footer />
     </>
   );

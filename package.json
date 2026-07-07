@@ -4,9 +4,11 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vite --host 127.0.0.1 --port 5173",
-    "build": "vite build",
-    "preview": "vite preview --host 127.0.0.1 --port 4173"
+    "dev": "node scripts/generateSeoPages.mjs && vite --host 127.0.0.1 --port 5173",
+    "build": "node scripts/generateSeoPages.mjs && vite build",
+    "seo:generate": "node scripts/generateSeoPages.mjs",
+    "preview": "vite preview --host 127.0.0.1 --port 4173",
+    "start": "node server.mjs"
   },
   "dependencies": {
     "@vitejs/plugin-react": "^5.0.0",

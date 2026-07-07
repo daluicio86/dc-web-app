@@ -6,6 +6,8 @@ import {
 } from "lucide-react";
 import { branches, diagnostics } from "../data/siteData.js";
 import { whatsappUrl } from "../utils/whatsapp.js";
+import { captureChatbotLead } from "../utils/leads.js";
+import { trackEvent } from "../utils/analytics.js";
 import "../styles/chatbot.css";
 
 const STORAGE_KEY = "doctorcell-diagnostic-v2";
@@ -61,6 +63,7 @@ export default function Chatbot() {
   const [photos, setPhotos] = useState([]);
   const [typing, setTyping] = useState(false);
   const [error, setError] = useState("");
+  const [savingLead, setSavingLead] = useState(false);
   const nextId = useRef(Math.max(3, ...messages.map((item) => item.id + 1)));
   const fileInput = useRef(null);
   const messageBox = useRef(null);
@@ -98,9 +101,24 @@ export default function Chatbot() {
     if (step === "contact") { setAnswers((a) => ({ ...a, contact: value })); setStep("consent"); botReply("Antes de continuar: ¿autorizas guardar estos datos para gestionar tu caso y contactarte?"); }
     if (step === "consent") {
       const accepted = value.startsWith("Acepto");
-      const caseId = accepted ? `DC-${Date.now().toString().slice(-7)}` : "Sin registro";
-      setAnswers((a) => ({ ...a, consent: accepted, caseId })); setStep("complete");
-      botReply(accepted ? `Caso ${caseId} creado. Tu solicitud quedó lista para confirmación.` : "No guardaremos tus datos. Puedes continuar por WhatsApp sin crear un caso.", { result: accepted });
+      if (!accepted) {
+        setAnswers((a) => ({ ...a, consent: false, caseId: "Sin registro" })); setStep("complete");
+        botReply("No guardaremos tus datos. Puedes continuar por WhatsApp sin crear un caso.");
+        return;
+      }
+      setSavingLead(true);
+      captureChatbotLead(answers)
+        .then(({ caseId }) => {
+          trackEvent("generate_lead", { lead_source: "chatbot", case_id: caseId }, "Lead");
+          setAnswers((a) => ({ ...a, consent: true, caseId }));
+          setStep("complete");
+          botReply(`Caso ${caseId} registrado. Un asesor ya puede ver tu solicitud y contactarte.`, { result: true });
+        })
+        .catch((requestError) => {
+          setError(`${requestError.message} Puedes reintentar o continuar por WhatsApp.`);
+          add({ from: "bot", text: "No pude confirmar el registro todavía. Tus datos siguen guardados en este navegador." });
+        })
+        .finally(() => setSavingLead(false));
     }
   };
 
@@ -164,7 +182,7 @@ export default function Chatbot() {
         {typing && <div className="chatbot-typing" aria-label="El asistente está escribiendo"><span /><span /><span /></div>}
       </div>
       {photos.length > 0 && <div className="chatbot-photos">{photos.map((photo) => <img src={photo.url} alt={photo.name} key={photo.url} />)}</div>}
-      {optionSets[step] && <div className="chatbot-options" aria-label="Respuestas rápidas">{optionSets[step].map((choice) => <button type="button" key={choice} onClick={() => advance(choice)} disabled={typing}>{choice}</button>)}</div>}
+      {optionSets[step] && <div className="chatbot-options" aria-label="Respuestas rápidas">{optionSets[step].map((choice) => <button type="button" key={choice} onClick={() => advance(choice)} disabled={typing || savingLead}>{choice}</button>)}</div>}
       {step === "complete" && <div className="chatbot-result-actions">
         <a href={whatsappUrl(summary)} target="_blank" rel="noopener noreferrer"><MessageCircle size={17} /> Confirmar por WhatsApp</a>
         <button type="button" onClick={() => { setStep("contact"); botReply("Conservaré el historial para el asesor."); }}><UserRound size={15} /> Hablar con un asesor</button>

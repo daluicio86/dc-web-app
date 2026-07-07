@@ -25,7 +25,7 @@ export const contactInfo = {
   whatsappDisplay: "+593 98 322 2100",
   phoneDisplay: "098 322 2100",
   phoneHref: "+593983222100",
-  email: "info@doctorcell.com.ec",
+  email: "dc.infouio@gmail.com",
   hours: "Lunes a sábado, 09:00–18:00"
 };
 
@@ -149,19 +149,21 @@ export const testimonials = [
   {
     name: "Jhoana Colina",
     text: "La atención fue excelente, muy amables y profesionales. Los recomiendo.",
-    branch: "Sucursal Quito"
-  },
-  {
-    name: "Johnathan Doe",
-    text: "Me resolvieron un problema grave con el teléfono. Buen servicio.",
-    branch: "Servicio técnico"
+    branch: "Cliente de DoctorCell"
   },
   {
     name: "Juan Morejon",
     text: "Mi pantalla quedó impecable, con garantía y atención muy amable.",
-    branch: "Cambio de pantalla"
+    branch: "Cliente de DoctorCell"
   }
 ];
+
+// Publica solo material propio y autorizado. Cada elemento debe corresponder
+// a una foto real guardada en /public/images/social-proof/.
+export const galleryItems = [];
+
+// Completar únicamente con cifras comprobadas en el perfil oficial de Google.
+export const googleReviewSummary = null;
 
 export const branches = [
   { name: "Matriz", address: "Prensa y Río Arajuno", reference: "Sector Av. de la Prensa", hours: contactInfo.hours, icon: MapPin },
