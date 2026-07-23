@@ -12,7 +12,7 @@ export default function Header() {
     <header className="site-header">
       <div className="header-topline">
         <div>
-          <span><MapPin size={14} /> 4 sucursales en Quito</span>
+          <span className="branches-pulse"><MapPin size={14} /> 4 sucursales en Quito</span>
           <a href={`tel:${contactInfo.phoneHref}`}><Phone size={14} /> {contactInfo.phoneDisplay}</a>
           <a href={`mailto:${contactInfo.email}`}><Mail size={14} /> {contactInfo.email}</a>
           <span><Clock3 size={14} /> {contactInfo.hours}</span>

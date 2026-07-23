@@ -30,6 +30,7 @@ export const contactInfo = {
 };
 
 export const navItems = [
+  { label: "Tienda", href: "#tienda" },
   { label: "Servicios", href: "#servicios" },
   { label: "Cotizar", href: "#cotizador" },
   { label: "Agendar", href: "#agendar" },

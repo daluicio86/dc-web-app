@@ -23,6 +23,7 @@ import Faq from "./components/Faq.jsx";
 import SeoGuides from "./components/SeoGuides.jsx";
 import RepairOptions from "./components/RepairOptions.jsx";
 import AnalyticsConsent from "./components/AnalyticsConsent.jsx";
+import Store from "./components/Store.jsx";
 
 export default function App() {
   return (
@@ -31,6 +32,7 @@ export default function App() {
       <main id="inicio">
         <Hero />
         <PromoStrip />
+        <Store />
         <QuoteFinder />
         <BrandsStrip />
         <Intro />

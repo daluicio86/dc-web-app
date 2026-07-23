@@ -142,6 +142,30 @@
 .case-cta > span svg { color: var(--dc-green-bright); }
 .case-cta a { padding: 12px 15px; border-radius: 10px; color: #17310c; background: var(--dc-green-bright); }
 
+.branches-pulse {
+  padding: 4px 8px;
+  border-radius: 999px;
+  animation: branchesBlink 1.35s ease-in-out infinite;
+}
+
+@keyframes branchesBlink {
+  0%, 100% {
+    color: #ffffff;
+    background: transparent;
+    text-shadow: none;
+  }
+  50% {
+    color: #d9ff66;
+    background: rgba(217, 255, 102, .13);
+    text-shadow: 0 0 10px rgba(217, 255, 102, .9);
+    box-shadow: 0 0 0 1px rgba(217, 255, 102, .25), 0 0 16px rgba(217, 255, 102, .22);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .branches-pulse { animation: none; color: #d9ff66; }
+}
+
 @media (max-width: 1050px) {
   .hero.hero-conversion { grid-template-columns: minmax(0, 1fr); padding-bottom: 80px; }
   .hero-conversion .hero-media { width: min(650px,100%); margin: 0 auto; }
