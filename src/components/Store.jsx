@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from "react";
-import { Check, Maximize2, MessageCircle, Minus, Plus, Search, ShoppingBag, ShoppingCart, Trash2, X } from "lucide-react";
+import { ArrowRight, Check, Maximize2, MessageCircle, Minus, Plus, Search, ShieldCheck, ShoppingBag, ShoppingCart, Sparkles, Trash2, Truck, X, Zap } from "lucide-react";
 import { whatsappUrl } from "../utils/whatsapp.js";
 import "../styles/store.css";
 
@@ -70,16 +70,29 @@ export default function Store() {
     return () => document.removeEventListener("keydown", closeOnEscape);
   }, [zoomedProduct]);
 
+  useEffect(() => {
+    const overlayOpen = cartOpen || Boolean(zoomedProduct);
+    document.body.classList.toggle("store-overlay-open", overlayOpen);
+    return () => document.body.classList.remove("store-overlay-open");
+  }, [cartOpen, zoomedProduct]);
+
   return (
     <section className="store section" id="tienda">
+      <div className="store-orb store-orb-one" aria-hidden="true" />
+      <div className="store-orb store-orb-two" aria-hidden="true" />
       <div className="store-heading">
         <div>
-          <p className="eyebrow">Tienda DoctorCell</p>
-          <h2>Protección que combina<br />con tu estilo.</h2>
-          <p>Explora nuestros cases disponibles y arma tu pedido. Confirmamos modelo, color y precio por WhatsApp.</p>
+          <p className="eyebrow"><Sparkles size={15} /> Nueva colección</p>
+          <h2>Protección de otro nivel.<br /><em>Diseñada para destacar.</em></h2>
+          <p>Cases seleccionados para proteger tu equipo sin esconder su estilo. Elige tu favorito y confirma disponibilidad al instante.</p>
+          <div className="store-trust">
+            <span><ShieldCheck size={17} /> Compatibilidad verificada</span>
+            <span><Zap size={17} /> Respuesta rápida</span>
+            <span><Truck size={17} /> Entrega en Quito</span>
+          </div>
         </div>
-        <button className="store-cart-button" type="button" onClick={() => setCartOpen(true)} aria-label={`Abrir carrito, ${itemCount} productos`}>
-          <ShoppingCart size={20} /><span>Mi pedido</span><b>{itemCount}</b>
+        <button className={`store-cart-button ${itemCount ? "has-items" : ""}`} type="button" onClick={() => setCartOpen(true)} aria-label={`Abrir carrito, ${itemCount} productos`}>
+          <ShoppingCart size={20} /><span><small>Tu selección</small>Mi pedido</span><b>{itemCount}</b>
         </button>
       </div>
 
@@ -95,10 +108,10 @@ export default function Store() {
         {visible.map((product) => {
           const inCart = Boolean(cart[product.id]);
           return <article className="product-card" key={product.id}>
-            <button className="product-image" type="button" onClick={() => setZoomedProduct(product)} aria-label={`Ampliar imagen de ${product.name}`}><img src={product.image} alt={product.name} loading="lazy" />{product.badge && <span>{product.badge}</span>}<i><Maximize2 size={17} /> Ver imagen</i></button>
-            <div className="product-copy"><small>{product.model}</small><h3>{product.name}</h3><span className="product-type">{product.type}</span><strong className="product-price">{product.price}</strong><p>Modelo verificado en el empaque · Confirma disponibilidad</p>
+            <button className="product-image" type="button" onClick={() => setZoomedProduct(product)} aria-label={`Ampliar imagen de ${product.name}`}><img src={product.image} alt={product.name} loading="lazy" />{product.badge && <span>{product.badge}</span>}<i><Maximize2 size={17} /> Ver imagen</i><em className="product-flirt"><span className="flirt-wink" aria-hidden="true">😉</span><span><b>¿Nos vamos juntos?</b><small>Tu iPhone y yo hacemos buen match</small></span></em></button>
+            <div className="product-copy"><small>{product.model}</small><h3>{product.name}</h3><div className="product-meta"><span className="product-type">{product.type}</span><span className="product-stock"><i /> Disponible</span></div><strong className="product-price">{product.price}</strong><p><ShieldCheck size={14} /> Modelo verificado · Confirma disponibilidad</p>
               <button type="button" className={inCart ? "is-added" : ""} onClick={() => changeQuantity(product.id, 1)}>{inCart ? <Check size={18} /> : <Plus size={18} />}{inCart ? `En pedido (${cart[product.id]})` : "Agregar al pedido"}</button>
-              <a className="product-buy" href={whatsappUrl(`Hola DoctorCell, quiero comprar ${product.name}, con precio publicado de ${product.price}. Quiero confirmar el modelo, color, valor final y coordinar el pago y la entrega.`)} target="_blank" rel="noopener noreferrer"><MessageCircle size={17} /> Comprar por WhatsApp</a>
+              <a className="product-buy" href={whatsappUrl(`Hola DoctorCell, quiero comprar ${product.name}, con precio publicado de ${product.price}. Quiero confirmar el modelo, color, valor final y coordinar el pago y la entrega.`)} target="_blank" rel="noopener noreferrer"><MessageCircle size={17} /> Comprar ahora <ArrowRight size={16} /></a>
             </div>
           </article>;
         })}
@@ -112,7 +125,10 @@ export default function Store() {
         </div>
         {cartItems.length > 0 && <div className="cart-footer"><p>El precio final se confirma según modelo y disponibilidad.</p><a href={whatsappUrl(orderMessage)} target="_blank" rel="noopener noreferrer">Solicitar por WhatsApp <span>{itemCount}</span></a></div>}
       </aside></div>}
-      {zoomedProduct && <div className="product-zoom" role="dialog" aria-modal="true" aria-label={`Imagen ampliada de ${zoomedProduct.name}`} onClick={() => setZoomedProduct(null)}><button className="zoom-close" type="button" onClick={() => setZoomedProduct(null)} aria-label="Cerrar imagen"><X /></button><div className="zoom-card" onClick={(event) => event.stopPropagation()}><img src={zoomedProduct.image} alt={zoomedProduct.name} /><div><span>{zoomedProduct.category}</span><strong>{zoomedProduct.name}</strong><b>{zoomedProduct.price}</b><a href={whatsappUrl(`Hola DoctorCell, quiero comprar ${zoomedProduct.name}, con precio publicado de ${zoomedProduct.price}. Quiero confirmar modelo, color, valor final y entrega.`)} target="_blank" rel="noopener noreferrer"><MessageCircle size={18} /> Confirmar compra por WhatsApp</a></div></div></div>}
+      {zoomedProduct && <div className="product-zoom" role="dialog" aria-modal="true" aria-label={`Imagen ampliada de ${zoomedProduct.name}`} onClick={() => setZoomedProduct(null)}><button className="zoom-close" type="button" onClick={() => setZoomedProduct(null)} aria-label="Cerrar imagen"><X /></button><div className="zoom-card" onClick={(event) => event.stopPropagation()}>
+        <div className="zoom-visual"><span className="zoom-kicker"><Sparkles size={14} /> Selección DoctorCell</span><img src={zoomedProduct.image} alt={zoomedProduct.name} /><div className="zoom-visual-note"><ShieldCheck size={17} /><span><b>Protección confiable</b><small>Modelo revisado en empaque</small></span></div></div>
+        <div className="zoom-info"><span className="zoom-model">{zoomedProduct.category}</span><strong>{zoomedProduct.name}</strong><div className="zoom-rating"><span>★★★★★</span> Producto recomendado</div><b className="zoom-price">{zoomedProduct.price}</b><div className="zoom-benefits"><span><ShieldCheck size={18} /><b>Compatibilidad verificada</b></span><span><Zap size={18} /><b>Confirmación inmediata</b></span><span><Truck size={18} /><b>Coordina tu entrega</b></span></div><a href={whatsappUrl(`Hola DoctorCell, quiero comprar ${zoomedProduct.name}, con precio publicado de ${zoomedProduct.price}. Quiero confirmar modelo, color, valor final y entrega.`)} target="_blank" rel="noopener noreferrer"><MessageCircle size={18} /><span>Lo quiero por WhatsApp<small>Confirmamos modelo y color</small></span><ArrowRight size={18} /></a><p className="zoom-reassurance"><span /> Atención directa, sin pagos dentro de la web</p></div>
+      </div></div>}
     </section>
   );
 }
