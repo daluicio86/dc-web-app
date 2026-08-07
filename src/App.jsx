@@ -24,6 +24,7 @@ import SeoGuides from "./components/SeoGuides.jsx";
 import RepairOptions from "./components/RepairOptions.jsx";
 import AnalyticsConsent from "./components/AnalyticsConsent.jsx";
 import Store from "./components/Store.jsx";
+import ZentraTechnology from "./components/ZentraTechnology.jsx";
 
 export default function App() {
   return (
@@ -40,6 +41,7 @@ export default function App() {
         <Services />
         <RepairOptions />
         <Guarantee />
+        <ZentraTechnology />
         <BeforeAfter />
         <Accessories />
         <Testimonials />

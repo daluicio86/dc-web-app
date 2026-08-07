@@ -3,6 +3,7 @@ import {
   ArrowRight,
   CheckCircle2,
   Clock3,
+  ExternalLink,
   MessageCircle,
   ShieldCheck,
   Sparkles,
@@ -70,6 +71,21 @@ export default function Hero() {
             rel="noopener noreferrer"
           >
             <MessageCircle size={18} /> Iniciar diagnóstico
+          </a>
+          <a
+            className="zentra-powered"
+            href="https://www.bluewindowstudio.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Conocer Blue Window Studio, creador de Zentra"
+          >
+            <span className="zentra-powered-mark" aria-hidden="true">Z</span>
+            <span>
+              <small>GESTIONADO CON</small>
+              <strong>Zentra</strong>
+              <em>por Blue Window Studio</em>
+            </span>
+            <ExternalLink size={14} aria-hidden="true" />
           </a>
         </div>
         <div className="floating-proof proof-top"><ShieldCheck size={18} /><span><strong>Garantía clara</strong> antes de reparar</span></div>
