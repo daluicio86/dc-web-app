@@ -5,6 +5,7 @@ import { ANALYTICS_ENABLED, CONSENT_KEY, initializeAnalytics, trackEvent } from 
 export default function AnalyticsConsent() {
   const [choice, setChoice] = useState(() => localStorage.getItem(CONSENT_KEY));
 
+  
   useEffect(() => {
     if (!ANALYTICS_ENABLED) return undefined;
     if (choice === "accepted") initializeAnalytics();
