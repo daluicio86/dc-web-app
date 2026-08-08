@@ -1,22 +1,21 @@
 import React from "react";
-import { ArrowRight, Gift, Timer } from "lucide-react";
-import { whatsappUrl } from "../utils/whatsapp.js";
+import { ArrowRight, Sparkles } from "lucide-react";
 
 export default function PromoStrip() {
   return (
-    <section className="promo-strip" aria-label="Promoción DoctorCell">
-      <div className="promo-icon"><Gift size={26} /></div>
+    <section className="promo-strip promo-zentra" aria-label="Tecnología Zentra por Blue Window Studio">
+      <div className="promo-icon promo-zentra-mark" aria-hidden="true">Z</div>
       <div>
-        <span><Timer size={14} /> Promoción por tiempo limitado</span>
-        <strong>Pregunta por el beneficio disponible para tu reparación</strong>
-        <small>Aplican condiciones según equipo, repuesto y sucursal.</small>
+        <span><Sparkles size={14} /> Tecnología detrás de cada reparación</span>
+        <strong>DoctorCell potencia su servicio con Zentra</strong>
+        <small>Gestión inteligente desarrollada por Blue Window Studio · BWS.</small>
       </div>
       <a
-        href={whatsappUrl("Hola DoctorCell, quiero conocer la promoción disponible para mi reparación.")}
+        href="https://www.bluewindowstudio.com/planes-y-precios"
         target="_blank"
         rel="noopener noreferrer"
       >
-        Consultar promoción <ArrowRight size={17} />
+        Conocer planes de Zentra <ArrowRight size={17} />
       </a>
     </section>
   );

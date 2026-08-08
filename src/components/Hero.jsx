@@ -49,6 +49,22 @@ export default function Hero() {
           <span><ShieldCheck size={16} /> Garantía visible</span>
           <span><Sparkles size={16} /> Prueba final del equipo</span>
         </div>
+
+        <a
+          className="hero-mobile-powered"
+          href="https://www.bluewindowstudio.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Conocer Zentra y Blue Window Studio"
+        >
+          <span className="hero-mobile-powered-mark" aria-hidden="true">Z</span>
+          <span className="hero-mobile-powered-copy">
+            <small>TECNOLOGÍA QUE IMPULSA TU SERVICIO</small>
+            <strong>Diagnóstico inteligente con <em>Zentra</em></strong>
+            <span>Desarrollado por Blue Window Studio <b>· BWS</b></span>
+          </span>
+          <ExternalLink size={17} aria-hidden="true" />
+        </a>
       </div>
 
       <div className="hero-media" aria-label="Diagnóstico DoctorCell por WhatsApp">
